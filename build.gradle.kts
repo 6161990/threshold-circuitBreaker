@@ -17,7 +17,7 @@ plugins {
   id("org.jlleitschuh.gradle.ktlint")
 }
 
-group = "com.yoon"
+group = "com.yoon.test"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -40,10 +40,17 @@ dependencies {
   implementation(enforcedPlatform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"))
   implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
   implementation("io.github.openfeign:feign-okhttp")
+  implementation("jakarta.xml.ws:jakarta.xml.ws-api")
   implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
   implementation("org.springframework.boot:spring-boot-starter-actuator")
   implementation("org.valid4j:valid4j:0.5.0")
 
+  testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+  testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesVersion")
+  testImplementation("io.mockk:mockk:$mockkVersion")
+  testImplementation("io.kotest.extensions:kotest-extensions-spring:$kotestExtensionsSpringVersion")
+  testImplementation("org.mockito.kotlin:mockito-kotlin:$mockitoVersion")
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.springframework.boot:spring-boot-starter-actuator")
   testImplementation("org.springframework.boot:spring-boot-starter-web")
@@ -53,7 +60,6 @@ dependencies {
   testImplementation("io.rest-assured:rest-assured")
   testImplementation("org.testcontainers:mockserver")
   testImplementation("org.mock-server:mockserver-netty:5.15.0")
-  testImplementation(kotlin("test"))
 }
 
 tasks.test {
