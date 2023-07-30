@@ -8,16 +8,16 @@ bootJar.enabled = false
 jar.enabled = true
 
 plugins {
-  kotlin("jvm") version "1.7.20"
-  kotlin("kapt")
-  kotlin("plugin.spring")
-
   id("org.springframework.boot")
   id("io.spring.dependency-management")
   id("org.jlleitschuh.gradle.ktlint")
+
+  kotlin("jvm")
+  kotlin("kapt")
+  kotlin("plugin.spring")
 }
 
-group = "com.yoon.test"
+group = "com.yoon"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -33,25 +33,16 @@ val jacksonVersion: String by rootProject
 val springCloudVersion: String by rootProject
 
 dependencies {
-  implementation(kotlin("stdlib"))
-  implementation("org.jetbrains.kotlin:kotlin-reflect")
-  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-  implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
-  implementation(enforcedPlatform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"))
   implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
   implementation("io.github.openfeign:feign-okhttp")
   implementation("jakarta.xml.ws:jakarta.xml.ws-api")
-  implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
   implementation("org.springframework.boot:spring-boot-starter-actuator")
-  implementation("org.valid4j:valid4j:0.5.0")
+  implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
+  implementation(enforcedPlatform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"))
 
-  testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
-  testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
-  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesVersion")
-  testImplementation("io.mockk:mockk:$mockkVersion")
-  testImplementation("io.kotest.extensions:kotest-extensions-spring:$kotestExtensionsSpringVersion")
-  testImplementation("org.mockito.kotlin:mockito-kotlin:$mockitoVersion")
   testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+//  feign client 테스트용
   testImplementation("org.springframework.boot:spring-boot-starter-actuator")
   testImplementation("org.springframework.boot:spring-boot-starter-web")
   testRuntimeOnly("io.micrometer:micrometer-registry-prometheus")

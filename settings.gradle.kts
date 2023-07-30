@@ -19,11 +19,6 @@ pluginManagement {
           useVersion(kotlinVersion)
         }
 
-        "org.jetbrains.kotlin.plugin.jpa" -> {
-          val kotlinVersion: String by settings
-          useVersion(kotlinVersion)
-        }
-
         "org.jetbrains.kotlin.plugin.spring" -> {
           val kotlinVersion: String by settings
           useVersion(kotlinVersion)
@@ -42,11 +37,6 @@ pluginManagement {
         "org.jlleitschuh.gradle.ktlint" -> {
           val ktlintVersion: String by settings
           useVersion(ktlintVersion)
-        }
-
-        "org.openapi.generator" -> {
-          val openApiGeneratorPluginVersion: String by settings
-          useVersion(openApiGeneratorPluginVersion)
         }
       }
     }

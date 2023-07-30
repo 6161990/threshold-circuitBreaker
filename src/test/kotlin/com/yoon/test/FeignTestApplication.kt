@@ -6,7 +6,6 @@ import org.mockserver.model.HttpRequest
 import org.mockserver.model.HttpRequest.request
 import org.mockserver.model.HttpResponse.response
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.runApplication
 import org.springframework.cloud.openfeign.EnableFeignClients
 import org.springframework.cloud.openfeign.FallbackFactory
@@ -24,7 +23,6 @@ import java.util.concurrent.TimeUnit
 
 @SpringBootApplication
 @EnableFeignClients
-@ConfigurationPropertiesScan
 class FeignTestApplication {
 
   @RestController
@@ -66,8 +64,7 @@ class FeignTestApplication {
   }
 
   private fun testWhen(mockServerClient: MockServerClient) {
-    println("22222222${mockServerClient.port}")
-    /*mockServerClient.`when`(
+    mockServerClient.`when`(
       request()
         .withMethod("GET")
         .withPath("/scucess-or-error")
@@ -88,7 +85,7 @@ class FeignTestApplication {
           .withBody("internal server error")
           .withDelay(Delay.delay(TimeUnit.MILLISECONDS, 100))
       }
-    }*/
+    }
   }
 }
 
