@@ -28,7 +28,7 @@ class FeignTestApplication {
   @RestController
   @FeignClient(name = "mock", fallbackFactory = TestFeignClientFallbackFactory::class)
   interface TestFeignClient {
-    @GetMapping("/scucess-or-error")
+    @GetMapping("/success-or-error")
     fun success(@RequestParam code: String): ResponseEntity<String>
   }
 
@@ -67,7 +67,7 @@ class FeignTestApplication {
     mockServerClient.`when`(
       request()
         .withMethod("GET")
-        .withPath("/scucess-or-error")
+        .withPath("/success-or-error")
     ).respond { httpRequest: HttpRequest? ->
       if (httpRequest?.getFirstQueryStringParameter("code") == "200") {
         response()

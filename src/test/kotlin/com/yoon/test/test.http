@@ -1,0 +1,11 @@
+### 200
+GET http://localhost:8080/success-or-error?code=200
+
+### 406
+GET http://localhost:8080/success-or-error?code=406
+
+### 500
+GET http://localhost:8080/success-or-error?code=500
+
+
+
